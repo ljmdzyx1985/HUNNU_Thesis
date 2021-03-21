@@ -1,0 +1,76 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8
+\documentclass{HUNNUthesis}
+\graphicspath{{figures/}{images}}%可以有多个目录{{...},{...}}
+%%!=========你需要填写的论文相关信息===========
+% 题目：应在25字以内，简明、具体、确切地表达论文特定内容，必要时，可以使用副标题。中文、外文题目应一致。
+\titlecn{湖南师范大学 \\研究生学位论文LaTeX模板}%中文标题
+\titleen{LaTeX Template of Postgraduate Thesis of \\Hunan Normal University}%英文标题
+\titlehead{湖南师范大学研究生学位论文LaTeX模板}%页眉标题，避免标题折行问题
+\priormajor{电子信息}%学科专业
+\interestmajor{嵌入式系统}
+\author{张三}%研究生姓名
+% 密级：视论文的内容、按国家规定的保密条例，由学位评定分委员会和保密组织确认。如属公开发行，不注密级。
+\csecret{公开}%密级
+% 导师姓名以研究生处备案名单为准，一般只写一名导师姓名。
+\supervisor{李四\ 教授}%导师姓名
+\studentid{202070181316}%学号
+\thesisid{54321}%论文编号
+\thesisdate{二〇二一年五月}%论文提交日期
+% 分类号：按《中国图书资料分类法》编号。
+\clcnumber{404.1}%分类号
+\schoolcode{10542}%学校代码
+\headtype{硕士}%{博士}学位论文，{硕士}学位论文，{同等学力硕士}学位论文，{高校教师在职硕士}学位论文，{中职教师在职硕士}学位论文，{教育硕士}学位论文等
+%%!=========论文其他相关信息选择===========
+\newif\ifBlindReiew % 条件语句,是否是盲审版本(默认盲审)
+%\BlindReiewtrue
+\BlindReiewfalse
+\newif\ifMAEng % 条件语句,是科学硕士还是工程硕士(默认工程硕士)
+\MAEngtrue
+%\MAEngfalse
+\newif\ifListFigandTab%条件语句,是否需要插图和列表索引(默认没有图表索引false)。
+%\ListFigandTabtrue
+\ListFigandTabfalse
+\begin{document}
+%%!=========封面内容填写完成=============
+\makecoverpage%%生成封面;
+\maketitlepage%%生成扉页;
+\frontmatter%关闭章节序号，页码使用罗马数字;
+\include{preface/abstract}%如果中英文摘要和目录一起罗马数字编页码，请把部分移到\mainmatter前;
+% 目录：由论文的章、节、参考文献、附录等的序号名称和起始页码组成
+\tableofcontents%生成目录;
+%======插图索引和附表索引
+\ifListFigandTab
+	\renewcommand{\listfigurename}{插图索引}
+	\renewcommand{\listtablename}{附表索引}
+	\setcounter{lofdepth}{1}
+	\newcommand{\loflabel}{图~}
+	\renewcommand{\numberline}[1]{\songti\zihao{4}\loflabel~#1\hspace*{\baselineskip}}
+	\addcontentsline{toc}{chapter}{插图索引}
+	\listoffigures
+	\thispagestyle{empty}
+	\newcommand{\lotlabel}{表~}
+	\renewcommand{\numberline}[1]{\songti\zihao{4}\lotlabel~#1\hspace*{\baselineskip}}
+	\addcontentsline{toc}{chapter}{附表索引}
+	\listoftables
+	\thispagestyle{empty}
+\else
+\fi
+%%!======文章主体部分========
+\mainmatter%开启章节序号计数，重置页码，页码使用阿拉伯数字;
+%%*各个章节内容单独分开撰写，方便编译和组织;
+%%*确保每一章都从奇数页开始翻页
+\include{body/chapter1}
+\include{body/chapter2}
+\include{body/chapter3}
+\include{body/chapter4}
+\include{body/chapter5}
+\include{body/conclusion}
+%=======论文后部========
+\backmatter
+\bibdatabase{references/reference}%参考文献数据库路径
+\printbib
+\include{appendix/acknowledgements}%致谢
+\include{appendix/appendix}%附录
+\include{appendix/statement}%诚信声明页;
+\end{document}

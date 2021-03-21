@@ -1,0 +1,177 @@
+% !TEX encoding = UTF-8
+\chapter{简要版帮助}
+若您已很熟悉\LaTeX~的相关操作，建议阅读这份简要帮助说明。
+\section{模板文件结构\label{sec:files}}
+整个模板根目录的文件列表如下：
+\begin{center}
+	\begin{tabular}{|l|p{7.5cm}|l|}
+		\hline
+		HUNNUthesis.tex          &\TeX{}样例文件             & \textcolor{red}{{*}} \\
+		\hline
+		HUNNUthesis.cls&包含论文所使用的宏包和全文格式的定义。& \textcolor{red}{{*}} \\
+		\hline
+		HUNNUThesis.tex& 主文件，包含封面、扉页和其他章节的引用信息。& \textcolor{red}{{*}} \\
+		\hline
+		preface& 包含毕业设计论文的中英文摘要。& \textcolor{red}{{*}} \\
+		\hline
+		images& 包含封面用到的湖南师范大学Logo。& \textcolor{red}{{*}} \\
+		\hline
+		figures& 包含正文中所用到的图片。& \textcolor{red}{{*}} \\
+		\hline
+		body& 包含正文的所有章节。& \textcolor{red}{{*}} \\
+		\hline
+		appendix& 附件相关内容& \textcolor{red}{{*}} \\
+		\hline
+		appendix.tex & 作者的发表论文和参加科研情况说明& \textcolor{red}{{*}} \\
+		\hline
+		acknowledgements.tex&致谢文件& \textcolor{red}{{*}} \\
+		\hline
+		statement.tex&原创性说明和版权使用授权说明书。& \textcolor{red}{{*}} \\
+		\hline
+		hunnubib.bst             & 参考文献样式文件               & \textcolor{red}{{*}} \\
+		\hline
+		references/reference.bib & bib数据库                  & \textcolor{red}{{*}} \\
+		\hline
+		official\_documents& 学位论文的撰写格式和开题报告实施管理办法。& \\
+		\hline
+		clean.bat& 双击此文件，可以用来清理HUNNUThesis.tex在编译之后生成的所有附属文件，如后缀名为.aux，.log，.bak的文件。&  \\
+		\hline
+	\end{tabular}
+\end{center}
+注： \textcolor{red}{{*}} 表示\LaTeX{}模板必须的文件。
+\subsection{文献引用}
+将引文的bib数据库(默认文件名为reference.bib)放入模板根目录下的references文件夹，即可通过插入---文献引用自动产生引文。
+\begin{itemize}
+	\item 参考文献上标引用
+	\begin{itemize}
+		\item Journal：An article \upcite{ELIDRISSI94,MELLINGER96}。%参考文献上标
+		\item An book \upcite{IEEE-1363,tex,companion}。%参考文献正常引用
+		\item Conference：A conference \upcite{kocher99,DPMG,cnproceed}。
+		\item Manual:A manual\upcite{NPB2}。
+		\item MasterThesis:\upcite{zhubajie,metamori2004,shaheshang,FistSystem01}。
+	\end{itemize}
+	\item 参考文献正常引用
+	\begin{itemize}
+	\item Journal：An article \cite{ELIDRISSI94,MELLINGER96}。%参考文献上标
+	\item An book \cite{IEEE-1363,tex,companion}。%参考文献正常引用
+	\item Conference：A conference \cite{kocher99,DPMG,cnproceed}。
+	\item Manual:A manual\cite{NPB2}。
+	\item MasterThesis:\cite{zhubajie,metamori2004,shaheshang,FistSystem01}。
+\end{itemize}
+\end{itemize}
+\subsection{伪代码实现}
+\begin{algorithm}
+	\caption{放进冰箱的大象}\label{算法实例}
+	\begin{algorithmic}
+		\REQUIRE 有一只大象
+		\ENSURE 放进冰箱里
+		\FOR {没有剩余的大象}
+		\IF {大象比冰箱大}
+		\STATE 把大象分割
+		\ENDIF
+		\ENDFOR
+		\STATE 第一步
+		\STATE 第二步
+		\STATE 第三步
+	\end{algorithmic}
+	AAA\end{algorithm}
+\subsection{代码展示}
+可以把你的程序添加到附录里，展示自己的工作。
+\begin{lstlisting}[language={[ANSI]C},
+numbers=left,
+numberstyle=\tiny,
+basicstyle=\small\ttfamily,
+stringstyle=\color{purple},
+keywordstyle=\color{blue}\bfseries,
+commentstyle=\color{olive},
+directivestyle=\color{blue},
+showstringspaces=false]
+	#include <stdio.h>
+	int main(int argc, char ** argv)
+	{
+		/*打印Hello,world*/
+		printf("Hello, world!\n");
+		
+		return 0;
+	}
+\end{lstlisting}
+\section{依赖}
+HUNNUthesis依赖于以下宏包，这些宏包在常见的\LaTeX{}发行版中都包括，在安装使用之前，请确定你的\TeX{}发行版中都已正常安装这些宏包
+\begin{table}[H]
+	\centering
+	\begin{tabular}{cccc}
+\hline
+{natbib} & {amsmath} & {amsfonts} & {amssymb} \\
+
+{graphicx} & {subfigure} & {mathptmx} & {float} \\
+
+{fontenc} & {booktabs} & {setspace} & {listings} \\
+
+{xcolor} & {multirow} & {fancyhdr} & {etoolbox} \\
+
+{tocloft} & {array} & {makecell} & {forloop} \\
+
+{xstring} & {hyperref} & {cleveref} & {enumitem} \\
+
+{algorithm} & {algorithmic} & {caption} & {ifthen} \\
+
+{titlesec} & {ulem} & {amssymb} & {wasysym} \\
+
+{flafter} & {booktabs} & {longtable} & {tabularx} \\
+
+{setspace} & {subfigure} & {enumitem} & {calc } \\
+
+{txfonts} & {bm} & {ntheorem} & {fancyvrb} \\
+
+{xcolor} & {--} & {--} & {--} \\
+\hline
+	\end{tabular}
+\end{table}
+如果你尚未安装这些宏包，可以启动你的 \TeX{} 发行版的宏包管理器
+来安装；或者到 \url{http://www.ctan.org} 上搜索下载并安装。
+\section{基本设置}
+\begin{enumerate}
+	\item 论文正文所用图片搜索路径默认设置为模板根目录下的figures/。
+	\item bib数据库默认设置为模板根目录下的references/reference.bib。 其中bib文件可由任意文献库管理软件自动生成
+\end{enumerate}
+\section{文字命令}
+\subsection{常用命令}
+\LaTeX 提供了一系列命令，用于修改字体、字号、数字等的呈现形式。
+\subsubsection{字体}
+ctex宏包及其文档类可直接使用以下六种字体：
+\vspace{1em}\noindent\hrule
+\begin{verbatim}
+宋体： \songti       启用宋体  {\songti 宋体}。
+黑体： \heiti        启用黑体  {\heiti 黑体}。
+仿宋： \fangsong    启用仿宋   {\fangsong 仿宋}。
+楷书： \kaishu       启用楷书   {\kaishu 楷书}。
+隶书： \lishu        启用隶书  {\lishu 隶书}。
+幼圆： \youyuan     启用幼圆   {\youyuan 幼圆}。
+\end{verbatim}
+\noindent\hrule\vspace{1em}
+
+宋体：{\songti 宋体}；黑体：{\heiti 黑体}；仿宋：{\fangsong 仿宋}；楷书：{\kaishu 楷书}；隶书： {\lishu 隶书}；幼圆： {\youyuan 幼圆}。
+\subsubsection{字号}
+{\bf 字号}%
+
+\begin{center}
+	\begin{tabular}{cccccccc}
+		\toprule
+		初号 & 小初 & 一号 & 小一 & 二号 & 小二 & 三号 & 小三 \\
+		0    & -0   & 1    & -1   & 2    & -2   & 3    & -3   \\
+		\hline
+		四号 & 小四 & 五号 & 小五 & 六号 & 小六 & 七号 & 八号 \\
+		4    & -4   & 5    & -5   & 6    & -6   & 7    & 8    \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\vspace{1em}\noindent\hrule
+\begin{verbatim}
+{\zihao{0}初号}； \dots {\zihao{4}四号}；\dots 
+\zihao{7}{七号} \zihao{4}
+\end{verbatim}
+\noindent\hrule\vspace{1em}
+
+{\zihao{0}初号}； \dots {\zihao{4}四号}；\dots \zihao{7}{七号}
+\zihao{4}
