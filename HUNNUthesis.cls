@@ -39,14 +39,12 @@
 \RequirePackage{xstring}
 \RequirePackage[unicode,psdextra]{hyperref}%Required for hyperlinks
 \RequirePackage[nameinlink]{cleveref}
-\RequirePackage{enumitem}
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
 \RequirePackage{caption}
 \RequirePackage{ifthen}
 \RequirePackage{titlesec}
 \RequirePackage{ulem}
-\RequirePackage{amssymb}
 \RequirePackage{wasysym}
 \RequirePackage{flafter}                        % 使得所有浮动体不能被放置在其浮动环境之前，以免浮动体在引述它的文本之前出现.
 \RequirePackage{booktabs}                       % 表格，横的粗线；\specialrule{1pt}{0pt}{0pt}
@@ -313,20 +311,24 @@
 %% 图序及图名置于图的下方，居中排列；表序及表名置于表的上方，居中排列。
 \captionsetup[table]{labelsep=space}%{labelsep=quad}
 \captionsetup[figure]{labelsep=space}
+\captionsetup[subfigure]{labelsep=space}
+\captionsetup[subtable]{labelsep=space}
 \renewcommand{\tablename}{表} %表题头
 \renewcommand{\figurename}{图} %图题头
-\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}} %使图编号为7.1的格式 %\protect{~}
-\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%使表编号为7.1的格式
+\renewcommand{\thefigure}{\arabic{chapter}-\arabic{figure}} %使图编号为7-1的格式 %\protect{~}
+\renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}%使表编号为7-1的格式
 \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}%使公式编号为7.1的格式
 \renewcommand{\thesubfigure}{(\alph{subfigure})}%使子图编号为(a)的格式
 \renewcommand{\thesubtable}{(\alph{subtable})} %使子表编号为(a)的格式
+\renewcommand{\p@subfigure}{\thefigure~} %使子图引用为 7-1 (a) 的格式，母图编号和子图编号之间用~ 加一个空格
+\renewcommand{\p@subtable}{\thetable~} %使子表引用为 7-1 (a) 的格式，母图编号和子图编号之间用~加一个空格
 \newcommand{\appedixfigtabnum}[1]{
 	\setcounter{equation}{0}
 	\renewcommand{\theequation}{#1-\arabic{equation}}
 	\setcounter{table}{0}   %从零开始编号
-	\renewcommand{\thetable}{#1-\arabic{table}\ }
+	\renewcommand{\thetable}{#1-\arabic{table}}
 	\setcounter{figure}{0}   %从零开始编号
-	\renewcommand{\thefigure}{#1-\arabic{figure}\ }
+	\renewcommand{\thefigure}{#1-\arabic{figure}}
 	\renewcommand{\figurename}{图}
 	\renewcommand{\tablename}{表}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
